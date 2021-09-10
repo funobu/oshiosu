@@ -34,7 +34,7 @@ const Home: NextPage = () => {
             <textarea
               name="body"
               placeholder="Write your Oc detail"
-              className="block resize-y w-full h-32 bg-white rounded-2xl shadow-lg px-8 py-4 mb-8"
+              className="block resize-y w-full h-32 bg-white rounded-2xl shadow-lg outline-none px-8 py-4 mb-8"
             ></textarea>
             <input type="file" className="block mb-4" />
             <button
