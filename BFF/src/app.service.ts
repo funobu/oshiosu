@@ -5,4 +5,8 @@ export class AppService {
   getHello(): string {
     return 'Hello World!';
   }
+
+  getLogined(): string {
+    return 'ログイン成功';
+  }
 }
