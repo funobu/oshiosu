@@ -32,7 +32,11 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         if (!profile) {
             throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
         }
-        done(null, profile);
+        const user = {
+            name: profile.displayName,
+            email: profile.emails[0].value
+        }
+        done(null, user);
     }
     
     

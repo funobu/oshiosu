@@ -16,7 +16,7 @@ export class AppController {
   }
 
   @Get('users')
-  @UseGuards(AuthGuard('google'))
+  @UseGuards(AuthService)
   getLogined(): string {
     return this.appService.getLogined();
   }
