@@ -1,0 +1,1 @@
+docker run --rm -p 6379:6379 -v $(PWD)/data/session:/data --name session redis redis-server --appendonly yes

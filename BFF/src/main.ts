@@ -5,6 +5,7 @@ import * as session from 'express-session';
 import * as redis from 'redis';
 import * as connectRedis from 'connect-redis';
 import * as passport from 'passport';
+import { PassportModule } from '@nestjs/passport';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -21,8 +22,9 @@ async function bootstrap() {
 
   // cookieAge: 7日有効 = 1s(1000ms) * 60 -> 1m(60s) * 60 -> 1h(60m) * 24 -> 1d(24h) * 7
   const cookieAge = 10 * 60 * 1000
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(
-    cookieParser(),
     session({
       secret: process.env.SESSION_SECRET,
       resave: false,
@@ -34,9 +36,8 @@ async function bootstrap() {
         httpOnly: true,
       }
     }),
-    passport.initialize(),
-    passport.session()
   );
-  await app.listen(3000);
+
+  await app.listen(8000);
 }
 bootstrap();
