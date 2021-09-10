@@ -1,7 +1,7 @@
 import { AppProps } from "next/dist/shared/lib/router/router";
 
-// import Chakra UI
-
+// import Tailwind CSS
+import "tailwindcss/tailwind.css";
 // global style
 import "../styles/globals.scss";
 
