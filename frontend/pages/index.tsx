@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ user }: any) => {
   return (
     <div className="">
       <Head>
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
             Welcome to <span className="text-white">OcOsu</span>
           </h1>
 
-          <Link href="/auth">
+          <Link href="http://localhost:8000/auth">
             <a className="block w-max bg-white rounded-md px-6 py-2">Login</a>
           </Link>
         </div>
@@ -77,6 +77,13 @@ const Home: NextPage = () => {
       </main>
     </div>
   );
+};
+
+Home.getInitialProps = async () => {
+  const res = await fetch("http://localhost:8000/user");
+  const json = res.json();
+  console.log(res);
+  return { user: json };
 };
 
 export default Home;
