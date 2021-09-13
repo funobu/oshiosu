@@ -6,7 +6,6 @@ import { UsersModule } from './users/users.module';
 import { InfraModule } from './infra/infra.module';
 import { OshiModule } from './oshi/oshi.module';
 import { ConfigModule } from '@nestjs/config';
-import { PassportModule } from '@nestjs/passport';
 import { SessionModule } from './session/session.module';
 
 @Module({
