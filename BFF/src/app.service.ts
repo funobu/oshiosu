@@ -1,12 +1,18 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Req, Request } from '@nestjs/common';
+import { SessionService } from './session/session.service';
 
 @Injectable()
 export class AppService {
+  constructor(
+    private readonly sessionService: SessionService,
+  ) {}
+    
   getHello(): string {
     return 'Hello World!';
   }
 
-  getLogined(): string {
-    return 'ログイン成功';
+  getLogined(@Req() req: Request): string {
+    const user = this.sessionService.readSession(req)
+    return `ようこそ ${user}さん。`;
   }
 }

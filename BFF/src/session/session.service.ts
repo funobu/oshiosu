@@ -2,16 +2,16 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class SessionService {
-    async createSession(req: any, value: string): Promise<any> {
+    createSession(req: any, value: string) {
         req.session.user = value
-        req.session.save()
         console.log(req.session.user)
     }
 
-    async readSession(req: any): Promise<any> {
-        console.log(req.session)
-        if (req.session.user == undefined) {
-            return null;
+    readSession(req: any): string {
+        console.log(req.session.user)
+        if (!req.session.user) {
+            console.log('passeed')
+            return undefined;
         }
         return req.session.user
     }
