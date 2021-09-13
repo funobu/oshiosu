@@ -28,6 +28,12 @@ export class UsersService {
           email: 'test2@example.com',
           icon: 'https://d4dj.bushimo.jp/wordpress/wp-content/uploads/EP_KkdCUcAEJ-iG.png',
         },
+        {
+          id: '4',
+          username: 'nwb',
+          email: 'nullworkbench@gmail.com',
+          icon: 'https://via.placeholder.com/150'
+        }
     ];
 
     async findAll(): Promise<User | undefined> {
