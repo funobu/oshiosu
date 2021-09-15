@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import UsersJson from "@/assets/json/users.json";
@@ -7,22 +8,24 @@ interface QueryParams extends ParsedUrlQuery {
   uid: string;
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const usersJson: User[] = UsersJson;
-  const paths = usersJson.map((slug) => {
-    const uid = String(slug.id);
+  const paths = usersJson.map((user) => {
+    const uid = String(user.id);
     return {
       params: { uid },
     };
   });
   return { paths, fallback: false };
-}
+};
 
-export async function getStaticProps({ params }: QueryParams) {
-  const res = await fetch("http://localhost:3000/api/users/" + params.uid);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await fetch(
+    "http://localhost:3000/api/users/" + context.params!.uid
+  );
   const user = await res.json();
   return { props: { user } };
-}
+};
 
 const UserPage: NextPage<{ user: User }> = ({ user }) => {
   return (

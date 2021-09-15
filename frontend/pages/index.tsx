@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -6,13 +7,13 @@ type Props = {
   posts: Post[];
 };
 
-export async function getStaticProps() {
-  const url = "http://localhost:3000/api/posts";
-  const res = await fetch(url)
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/posts")
     .then((r) => r.json())
     .catch((err) => console.log(err));
+
   return { props: { posts: res } };
-}
+};
 
 const Home: NextPage<Props> = ({ posts }: Props) => {
   return (

@@ -12,7 +12,8 @@ export default function usersHundler(
 
   switch (method) {
     case "GET":
-      res.status(200).json(UsersJson[uid]);
+      const u = typeof uid == "string" ? uid : uid[0];
+      res.status(200).json(UsersJson[Number(u)]);
       break;
     default:
       res.setHeader("Allow", ["GET", "PUT"]);
