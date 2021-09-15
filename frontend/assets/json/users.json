@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "username": "犬寄しのぶ",
+    "email": "fukids34@gmail.com",
+    "icon": "https://pbs.twimg.com/media/Enk1ojwUUAExAFo.jpg"
+  },
+  {
+    "id": 1,
+    "username": "大鳴門むに",
+    "email": "test@example.com",
+    "icon": "https://pbs.twimg.com/media/D8IDOlrVsAEMzIi.png"
+  },
+  {
+    "id": 2,
+    "username": "山手響子",
+    "email": "test2@example.com",
+    "icon": "https://d4dj.bushimo.jp/wordpress/wp-content/uploads/EP_KkdCUcAEJ-iG.png"
+  }
+]

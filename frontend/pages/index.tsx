@@ -1,10 +1,12 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
-import styles from "../styles/Home.module.scss";
 
-const Home: NextPage = () => {
+type Props = {
+  posts: Post[];
+};
+
+const Home: NextPage<Props> = ({ posts }: Props) => {
   return (
     <div className="">
       <Head>
@@ -49,27 +51,17 @@ const Home: NextPage = () => {
         {/* 投稿一覧 */}
         <section>
           <h2 className="text-4xl text-center mb-8">Timeline</h2>
-          {[...Array(4)].map((post, postIdx) => {
+          {posts.map((post, postIdx) => {
             return (
               <div
                 key={postIdx}
                 className="bg-white px-8 py-8 rounded-2xl shadow-xl mb-10"
               >
-                <img
-                  src="https://via.placeholder.com/700x500.png?text=This+is+placeholder+image."
-                  className="mb-8"
-                />
+                <img src={post.img_url} className="mb-8" alt="" />
                 <span className="block text-2xl font-semibold text-yellow-600 mb-4">
-                  投稿タイトル
+                  {post.title}
                 </span>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                  in velit id nunc dignissim mattis et in justo. Aliquam et
-                  gravida augue. Vestibulum fermentum blandit gravida. Aenean
-                  condimentum ex semper, vestibulum sapien quis, auctor mi.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et
-                  ultrices posuere cubilia curae;
-                </p>
+                <p>{post.explanation}</p>
               </div>
             );
           })}
@@ -77,6 +69,14 @@ const Home: NextPage = () => {
       </main>
     </div>
   );
+};
+
+Home.getInitialProps = async () => {
+  const url = "http://localhost:3000/api/posts";
+  const res = await fetch(url)
+    .then((r) => r.json())
+    .catch((err) => console.log(err));
+  return { posts: res };
 };
 
 export default Home;
