@@ -31,7 +31,7 @@ const UserPage: NextPage<{ user: User }> = ({ user }) => {
   return (
     <div className="container mx-auto relative h-screen">
       <main className="h-full">
-        <h2 className="text-3xl text-center pt-32">ユーザー情報</h2>
+        <h2 className="text-3xl text-center pt-48">ユーザー情報</h2>
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
           <div
             className="w-4/5 max-w-4xl p-8 border-8 border-white rounded-3xl bg-yellow-300 shadow-xl"
