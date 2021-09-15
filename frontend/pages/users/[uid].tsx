@@ -3,6 +3,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import UsersJson from "@/assets/json/users.json";
+import CircleImg from "@/components/CircleImg";
+import { isError } from "util";
 
 interface QueryParams extends ParsedUrlQuery {
   uid: string;
@@ -46,7 +48,7 @@ const UserPage: NextPage<{ user: User }> = ({ user }) => {
             <h3 className="text-5xl font-bold text-white">OcOsu Passport</h3>
             <div className="flex items-center w-full mt-8 mb-2">
               <div className="flex-none w-1/3">
-                <img src={user.icon} alt="" />
+                <CircleImg imgPath={user.icon} />
               </div>
               <div className="flex-grow ml-12">
                 <h3 className="text-4xl font-semibold mb-2">{user.username}</h3>
@@ -60,12 +62,13 @@ const UserPage: NextPage<{ user: User }> = ({ user }) => {
         <div className="mt-24 text-center">
           <h3 className="text-3xl font-semibold mb-8">Your Oc</h3>
           <div className="bg-white px-8 py-8 rounded-2xl shadow-xl mb-10">
-            <img
-              src={user.icon}
-              className="mx-auto mb-8"
-              alt=""
+            <div
+              className="mx-auto max-w-md mb-8"
               style={{ maxHeight: "500px" }}
-            />
+            >
+              <CircleImg imgPath={user.icon} />
+            </div>
+
             <span className="block text-2xl font-semibold text-yellow-600 mb-4">
               Title
             </span>
