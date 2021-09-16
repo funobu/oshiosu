@@ -1,4 +1,5 @@
 import { AppProps } from "next/dist/shared/lib/router/router";
+import GlobalHeader from "@/components/GlobalHeader";
 
 // import Tailwind CSS
 import "tailwindcss/tailwind.css";
@@ -6,7 +7,12 @@ import "tailwindcss/tailwind.css";
 import "../styles/globals.scss";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <GlobalHeader />
+      <Component {...pageProps} />
+    </>
+  );
 };
 
 export default App;
