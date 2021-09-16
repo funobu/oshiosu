@@ -1,24 +1,13 @@
 import { NextPage } from "next";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Link from "next/link";
-import UsersJson from "@/assets/json/users.json";
 import CircleImg from "@/components/CircleImg";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const usersJson: User[] = UsersJson;
-  const paths = usersJson.map((user) => {
-    const uid = String(user.id);
-    return {
-      params: { uid },
-    };
-  });
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await fetch(
-    "http://localhost:3000/api/users/" + context.params!.uid
-  );
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const host = context.req.headers.host;
+  console.log(host);
+  const uid = context.query.uid;
+  const res = await fetch(`http://${host}/api/users/${uid}`);
   const user = await res.json();
   return { props: { user } };
 };
