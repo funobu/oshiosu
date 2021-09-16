@@ -25,7 +25,7 @@ services:
       - ./BFF:/var/app/BFF
       - node_module_BFF:/var/app/BFF/node_modules
     working_dir: /var/app/BFF
-    command: bash -c "yarn run start"
+    command: bash -c "yarn install && yarn run start"
     env_file: .env
     depends_on:
       - redis
