@@ -1,14 +1,8 @@
 import { NextPage } from "next";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Link from "next/link";
-import { ParsedUrlQuery } from "querystring";
 import UsersJson from "@/assets/json/users.json";
 import CircleImg from "@/components/CircleImg";
-import { isError } from "util";
-
-interface QueryParams extends ParsedUrlQuery {
-  uid: string;
-}
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const usersJson: User[] = UsersJson;
