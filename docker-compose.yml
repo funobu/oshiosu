@@ -9,7 +9,7 @@ services:
     container_name: frontend
     image: node:16.8
     ports:
-      - 3001:3000
+      - 3000:3000
     volumes:
       - ./frontend:/var/app/frontend
       - node_module_frontend:/var/app/frontend/node_modules

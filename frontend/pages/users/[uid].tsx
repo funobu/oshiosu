@@ -5,7 +5,6 @@ import CircleImg from "@/components/CircleImg";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const host = context.req.headers.host;
-  console.log(host);
   const uid = context.query.uid;
   const res = await fetch(`http://${host}/api/users/${uid}`);
   const user = await res.json();
