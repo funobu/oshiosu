@@ -1,11 +1,10 @@
 import { NextPage } from "next";
-import { GetServerSideProps } from "next";
 import Link from "next/link";
 import CircleImg from "@/components/CircleImg";
 import Router from "next/router";
 import useSWR from "swr";
 
-const UserPage: NextPage = () => {
+const MyPage: NextPage = () => {
   const fetcher = (url: string) =>
     fetch(url, { credentials: "include" }).then((r) => {
       if (r.status == 401) {
@@ -83,4 +82,4 @@ const UserPage: NextPage = () => {
   }
 };
 
-export default UserPage;
+export default MyPage;
