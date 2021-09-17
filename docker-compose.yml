@@ -19,6 +19,7 @@ services:
   BFF:
     container_name: BFF
     image: node:16.8
+    env_file: ./BFF/.env
     ports:
       - 8000:8000
     volumes:
@@ -34,7 +35,9 @@ services:
     container_name: redis
     image: redis:latest
     expose:
-      - "6379"
+      - 6379
+    ports:
+      - 6379:6379
     volumes:
       - ./data/session:/var/app/data
     working_dir: /var/app
