@@ -7,7 +7,12 @@ import useSWR from "swr";
 
 const UserPage: NextPage = () => {
   const fetcher = (url: string) =>
-    fetch(url, { credentials: "include" }).then((r) => r.json());
+    fetch(url, { credentials: "include" }).then((r) => {
+      if (r.status == 401) {
+        Router.push("/auth/login");
+      }
+      return r.json();
+    });
   const { data, error } = useSWR("http://localhost:8000/user", fetcher);
 
   const user: User = data;

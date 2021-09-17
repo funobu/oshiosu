@@ -7,7 +7,7 @@ const GlobalHeader: React.FC = () => {
         <a className="text-2xl font-semibold">OcOsu</a>
       </Link>
 
-      <Link href="/users/0" passHref>
+      <Link href="/userpage" passHref>
         <a>User page</a>
       </Link>
     </header>
