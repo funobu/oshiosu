@@ -32,7 +32,7 @@ const Home: NextPage<Props> = ({ posts }: Props) => {
             Welcome to <span className="text-white">OcOsu</span>
           </h1>
 
-          <Link href="/auth/googleAuth">
+          <Link href="/auth/login">
             <a className="block w-max bg-white rounded-md px-6 py-2">Login</a>
           </Link>
         </div>
