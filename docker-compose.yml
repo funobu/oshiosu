@@ -30,15 +30,38 @@ services:
     env_file: .env
     depends_on:
       - redis
+      - user_db
 
   redis:
     container_name: redis
     image: redis:latest
-    expose:
-      - 6379
     ports:
       - 6379:6379
     volumes:
       - ./data/session:/var/app/data
     working_dir: /var/app
     command: bash -c "redis-server --appendonly yes"
+
+  user_service:
+    container_name: user_service
+    image: golang:1.17
+    expose:
+      - 5001:5001
+    volumes:
+      - ./user-service:/usr/src/user-service
+    env_file: .env
+    working_dir: /usr/src/user_service
+    command: bash -c "go run main.go"
+
+  user_db:
+    image: mysql
+    platform: linux/amd64 #ここはlinux/x86_64に変更して(Futaが M1 なだけ)
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./data/user_db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      TZ: 'Asia/Tokyo'
+    ports:
+      - 3306:3306
