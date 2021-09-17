@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Router from "next/router";
 import { useForm } from "react-hook-form";
 
 type Form = {
@@ -30,10 +31,11 @@ const Login: NextPage = () => {
       }),
     }).then(
       function (response) {
-        console.log(response);
+        // console.log(response);
+        Router.push("/userpage");
       },
       function (error) {
-        alert(error);
+        console.log(`Error in getSession(): ${error}`);
       }
     );
   };

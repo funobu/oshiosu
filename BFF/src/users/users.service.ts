@@ -11,20 +11,20 @@ export class UsersService {
 
   private readonly users = [
     {
-      id: "1",
+      id: 1,
       username: '犬寄しのぶ',
       email: 'fukids34@gmail.com',
       icon: 'https://pbs.twimg.com/media/Enk1ojwUUAExAFo.jpg',
       password: 'aaaaa'
     },
     {
-      id: "2",
+      id: 2,
       username: '大鳴門むに',
       email: 'test@example.com',
       icon: 'https://pbs.twimg.com/media/D8IDOlrVsAEMzIi.png',
     },
     {
-      id: "3",
+      id: 3,
       username: '山手響子',
       email: 'test2@example.com',
       icon: 'https://d4dj.bushimo.jp/wordpress/wp-content/uploads/EP_KkdCUcAEJ-iG.png',
